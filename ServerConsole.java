@@ -3,13 +3,19 @@ import java.util.Scanner;
 
 import common.ChatIF;
 
+/**
+ * This class constructs the UI for a chat server.  It implements the
+ * chat interface in order to activate the display() method.
+ *
+ * @author Anthony Daher 300233710
+ */
 public class ServerConsole implements ChatIF 
 {
   
 	  //Instance variables **********************************************
 	  
 	  /**
-	   * The instance of the client that created this ConsoleChat.
+	   * The instance of the server that created this ConsoleChat.
 	   */
 	  EchoServer server;
 	  
@@ -24,9 +30,8 @@ public class ServerConsole implements ChatIF
 	  //Constructors ****************************************************
 
 	  /**
-	   * Constructs an instance of the ClientConsole UI.
+	   * Constructs an instance of the ServerConsole UI.
 	   *
-	   * @param host The host to connect to.
 	   * @param port The port to connect on.
 	   */
 	  public ServerConsole(int port) 
@@ -54,7 +59,7 @@ public class ServerConsole implements ChatIF
 	  
 	  /**
 	   * This method waits for input from the console.  Once it is 
-	   * received, it sends it to the client's message handler.
+	   * received, it sends it to the server's message handler.
 	   */
 	  public void accept() 
 	  {
@@ -91,7 +96,7 @@ public class ServerConsole implements ChatIF
 	  //Class methods ***************************************************
 	  
 	  /**
-	   * This method is responsible for the creation of the Client UI.
+	   * This method is responsible for the creation of the Server UI.
 	   *
 	   * @param args[0] The host to connect to.
 	   */

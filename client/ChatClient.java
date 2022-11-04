@@ -15,6 +15,7 @@ import java.io.*;
  * @author Dr Timothy C. Lethbridge
  * @author Dr Robert Lagani&egrave;
  * @author Fran&ccedil;ois B&eacute;langer
+ * @author Anthony Daher 300233710
  * @version July 2000
  */
 public class ChatClient extends AbstractClient
@@ -38,6 +39,7 @@ public class ChatClient extends AbstractClient
    * @param host The server to connect to.
    * @param port The port number to connect on.
    * @param clientUI The interface type variable.
+   * @param loginID the ID to connect with
    */
   
   public ChatClient(String host, int port, ChatIF clientUI, String loginID) 
@@ -86,6 +88,11 @@ public class ChatClient extends AbstractClient
     }
   }
   
+  /**
+   * This method handles all commands coming from the UI            
+   *
+   * @param cmd The command from the UI.    
+   */
   private void handleCommand(String cmd) {
 	  if (cmd.equals("#quit")) {
 		  quit();

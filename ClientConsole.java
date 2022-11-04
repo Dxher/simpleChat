@@ -16,6 +16,7 @@ import common.*;
  * @author Fran&ccedil;ois B&eacute;langer
  * @author Dr Timothy C. Lethbridge  
  * @author Dr Robert Lagani&egrave;re
+ * @author Anthony Daher 300233710
  * @version September 2020
  */
 public class ClientConsole implements ChatIF 
