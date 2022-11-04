@@ -105,12 +105,7 @@ public class ClientConsole implements ChatIF
    */
   public void display(String message) 
   {
-	if (message.contains("SERVER MSG")) {
-	    System.out.println(message);
-	}
-	else {
-	    System.out.println(message);
-	}
+	  System.out.println(message);
   }
 
   
