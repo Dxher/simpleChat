@@ -50,17 +50,17 @@ public class ClientConsole implements ChatIF
    * @param host The host to connect to.
    * @param port The port to connect on.
    */
-  public ClientConsole(String host, int port) 
+  public ClientConsole(String host, int port, String loginID) 
   {
     try 
     {
-      client= new ChatClient(host, port, this);
+      client= new ChatClient(host, port, this, loginID);
       
       
     } 
     catch(IOException exception) 
     {
-      System.out.println("Error: Can't setup connection!"
+      System.out.println("ERROR - Can't setup connection!"
                 + " Terminating client.");
       System.exit(1);
     }
@@ -104,7 +104,12 @@ public class ClientConsole implements ChatIF
    */
   public void display(String message) 
   {
-    System.out.println("> " + message);
+	if (message.contains("SERVER MSG")) {
+	    System.out.println(message);
+	}
+	else {
+	    System.out.println(message);
+	}
   }
 
   
@@ -117,19 +122,32 @@ public class ClientConsole implements ChatIF
    */
   public static void main(String[] args) 
   {
+	String loginID;
     String host = "";
-
-
+    int port = 0;
+    
     try
     {
-      host = args[0];
-    }
-    catch(ArrayIndexOutOfBoundsException e)
-    {
-      host = "localhost";
-    }
-    ClientConsole chat= new ClientConsole(host, DEFAULT_PORT);
-    chat.accept();  //Wait for console data
+      loginID = args[0];
+      try {
+	      host = args[1];
+	      port = Integer.parseInt(args[2]);
+	  }
+	  catch(NumberFormatException ne) {
+	      port = DEFAULT_PORT;
+	  }
+	  catch(ArrayIndexOutOfBoundsException e){
+	      host = "localhost";
+	      port = DEFAULT_PORT;
+	  }
+      host = "localhost"; //Im doing this because changing the host breaks the connection to the server
+	  ClientConsole chat= new ClientConsole(host, port, loginID);
+	  chat.accept();  //Wait for console data
+	  
+	}
+    catch(ArrayIndexOutOfBoundsException e) {
+    	System.out.println("ERROR - No Login ID specified. Connection aborted.");
+    }  
   }
 }
 //End of ConsoleChat class
